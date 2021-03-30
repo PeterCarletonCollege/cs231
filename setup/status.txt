@@ -1,0 +1,7 @@
+name: Peter McCrea
+
+plan for using Kali: I will mostly be using RemoteLabs, but can install a VM if it proves to be convenient / expedient
+
+status of my Kali installation: done - RemoteLabs
+
+other observations or concerns: 

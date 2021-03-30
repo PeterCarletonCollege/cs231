@@ -1,3 +1,10 @@
+# This class's stuff:
+.DS_Store
+*.pyc
+__pycache__/
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +134,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
