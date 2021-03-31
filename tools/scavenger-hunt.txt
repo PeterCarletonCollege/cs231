@@ -1,0 +1,48 @@
+1. What's your computer's IP address for its current Internet connection? (Bonus: how can you tell the difference between your Ethernet IP and your wireless IP if you have both connections active?)
+
+Command: "ifconfig" This command displays lots of info, including the public IP address's for your various network interfaces. In my case, there is a network interface called "en0" which is my wireless IP. That IP is 137.22.169.XXX (censored because this is a public git repo). If I connected to ethernet, ifconfig would display my ethernet IP under a different network device that wasn't "en0". 
+
+2. How can you determine the IP address associated with a given host name?
+
+Command: "ping hostname.topleveldomaingoeshere" (e.g. "ping google.com" gives me the IP address 172.217.9.78)
+
+3. How can you determine the host name(s) associated with a given IP address?
+
+Command: "nslookup 1.1.1.1" where 1.1.1.1 is the IP address
+
+4. How can you copy a file from one computer to another? Or more to the point, if you create a file on the Kali virtual machine and you want to put it someplace where you can save it, like your your Math/CS account on mantis.mathcs.carleton.edu, how do you go about it from the Kali command-line interface?
+
+Assuming I was on the Kali virtual machine and wanted to transfer a file to mantis, I could do something like:
+
+scp myFile.txt myCarletonUsername@mantis.mathcs.carleton.edu:/my/home/directory
+
+5. How can you tell whether there's a process listening on a given port (e.g. port 80 or port 22) on a given host?
+
+Command: "nmap host.namegoeshere | grep "portIwanttoCheck"
+
+6. How can you tell which ports have processes listening on them on a given host?
+
+Command: "nmap host.goes.here" 
+
+7. How can you retrieve and save a given web page (say http://google.com/ or http://carleton.edu/) in a file on your system?
+
+Command: "wget website.website"
+
+8. How can you view the HTTP headers sent back from a specified web server when you request one of its pages?
+
+Command: "curl -i website.website"
+
+9. [Super bonus question] Is there a command-line-only way to view the HTTP headers that *my* computer sends when I run the commands in the previous two questions?
+
+Command: "curl -v website.website"
+
+
+
+
+
+
+
+
+
+
+
