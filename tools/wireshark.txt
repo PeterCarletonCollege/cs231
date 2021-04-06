@@ -1,0 +1,74 @@
+Kenyon Nystrom & Peter McCrea
+
+===== DAYTIME =====
+1. :
+
+1	0.000000000	10.0.2.15	129.6.15.28	TCP	74	58430 → 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM=1 TSval=2963456854 TSecr=0 WS=128
+2	0.032779110	129.6.15.28	10.0.2.15	TCP	60	13 → 58430 [SYN, ACK] Seq=0 Ack=1 Win=32768 Len=0 MSS=1460
+3	0.032803892	10.0.2.15	129.6.15.28	TCP	54	58430 → 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+
+2. 
+
+Our computer used port 58430 for this interaction. Our client needed a port because it needs to receive messages, and this port "directs" the information received from the server to the correct place in the client.
+
+3. 
+
+4	0.064840507	129.6.15.28	10.0.2.15	DAYTIME	105	DAYTIME Response
+
+
+4. 
+
+The full content of this frame excluding Ethernet, IP, TCP is meta data about the frame such as the network interface our computer received it on, the time the frame arrived on our computer, the time different this frame arrived relative to the other frames, and other Wireshark metadata. The daytime protocol response itself includes information about what type of packet it is (a response) as well as the raw data corresponding to the actual date and time, the port it sent the response to on our computer, the standardization of the time, the source of the information (NIST) and an ending character (\n).
+  
+5. [SYN] indicates the start of a TCP session and these are the synchronization packets. 
+
+6. [ACK] are the acknowledgment packets, acknowledging that data was correctly received. 
+
+7. [FIN] indicates the end of a TCP session, i.e. that the session is finished. 
+
+8. The daytime server initiated the closing of the TCP connection. We can tell because the first instance of [FIN] is being sent from port 13 to our port (58430).
+
+
+===== HTTP =====
+
+
+1.
+
+There were two TCP connections opened. One from port 36188 to port 80, and another from port 36190 to port 80.
+
+2. 
+
+Yes, frame 7:
+
+7	0.045068312	10.0.2.15	45.79.89.123	HTTP	395	GET /index.html HTTP/1.1 
+
+This frame is the first HTTP request, and includes the GET header for /index.html
+
+3.
+
+Yes, frame 11:
+
+11	0.124087917	10.0.2.15	45.79.89.123	HTTP	364	GET /jeff_square_head.jpg HTTP/1.1 
+
+This frame is an HTTP request, and includes the GET header for /jeff_square_head.jpg 
+
+
+
+
+
+===== QUESTIONS =====
+Why were two tcp connections opened when we requested a webpage? Why wouldn't just one work?
+
+
+Why do some packets include parts such as:
+
+[TCP segment of a reassembled PDU]?
+
+What do these mean?
+
+What exactly is the hex info Wireshark includes? Is this all of the packet data? All of the frame information?
+
+What does the second "Len" mean as opposed to the length column? How can some of the "Len" attributes be 0?
+
+
+
