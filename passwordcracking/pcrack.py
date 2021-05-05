@@ -1,8 +1,10 @@
 import hashlib
 import itertools 
+wordsRaw = [line.strip().lower() for line in open('words.txt')]
+outList = []
+for i in wordsRaw:
+    for j in wordsRaw:
+        outList.append(i+j)
 
 
-words1 = [line.strip().lower() for line in open('words.txt')]
-
-
-print(list(itertools.permutations(words1, 2)))
+print(outList)
