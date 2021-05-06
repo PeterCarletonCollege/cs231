@@ -16,7 +16,7 @@ def compute_hash(word):
     return hash_hex_string
 
 wordsTemp = [line.strip().lower() for line in open('words.txt')]
-words = wordsTemp[fileSplit::70]
+words = wordsTemp[int(fileSplit)::70]
 
 
 
