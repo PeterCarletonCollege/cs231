@@ -44,6 +44,6 @@ for i in range((len(words)/6),2(len(words)/6)):
                 f.flush()
 
 end = time()
-with open('timings.txt'.format(ident), "w") as f:
+with open('timings.txt'.format(ident), "a") as f:
     f.write(str(hashes_computed) + " " + str(end - start) + "\n")
     f.flush()
