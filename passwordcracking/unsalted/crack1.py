@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
         user_hash = dict()
 
-        for line in open('passwords1_original.txt'):
+        for line in open('passwords1.txt'):
             line = line.split(":")
             user_hash[line[1]] = line[0]
 
