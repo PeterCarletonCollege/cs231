@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
         user_hash = dict()
 
-        for line in open('passwords1_original.txt'):
+        for line in open('passwords1.txt'):
             line = line.split(":")
             user_hash[line[1]] = line[0]
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
             hashes_computed += 1
 
             if word_hash in user_hash:
-                with open('cracked1{0}.txt'.format(ident), "a") as f:
+                with open('cracked.txt', "a") as f:
                     f.write("{0}:{1}\n".format(user_hash[word_hash], word))
 
             for second_word in words:
@@ -48,10 +48,10 @@ if __name__ == "__main__":
                 hashes_computed += 1
 
                 if pair_hash in user_hash:
-                    with open('cracked1{0}.txt'.format(ident), "a") as f:
+                    with open('cracked.txt', "a") as f:
                         f.write("{0}:{1}\n".format(user_hash[pair_hash], pair))
 
     finally:
         end = time()
-        with open('timings1{0}.txt'.format(ident), "w") as f:
+        with open('timings.txt'.format(ident), "w") as f:
             f.write(str(hashes_computed) + " " + str(end - start) + "\n")

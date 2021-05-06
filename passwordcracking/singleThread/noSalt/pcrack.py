@@ -7,6 +7,7 @@ from time import time
 from tqdm import tqdm
 
 
+
 def compute_hash(word):
     encoded = word.encode('utf-8')
     md5 = hashlib.md5(encoded)
@@ -15,33 +16,30 @@ def compute_hash(word):
     hash_hex_string = hash_hex.decode('utf-8')
     return hash_hex_string
 
-words = [line.strip().lower() for line in open('words.txt')]
 
+words = [line.strip().lower() for line in open('words.txt')]
 user_hash = dict()
 for line in open('passwords1.txt'):
     line = line.split(":")
     user_hash[line[1]] = line[0]
 
+
 hashes_computed = 0
 start = time()
-
-
-for i in range(len(words)):
-    word = words[i]
-    word_hash = compute_hash(word)
-    hashes_computed += 1
-
-    if word_hash in user_hash:
-        with open('cracked.txt', "a") as f:
-            f.write("{0}:{1}\n".format(user_hash[word_hash], word))
-
-    for second_word in words:
-        pair = word + second_word
-        pair_hash = compute_hash(pair)
+with open('cracked.txt', "a") as f:
+    for i in tqdm(range(len(words))):
+        word = words[i]
+        word_hash = compute_hash(word)
         hashes_computed += 1
 
-        if pair_hash in user_hash:
-            with open('cracked.txt', "a") as f:
+        if word_hash in user_hash:
+            f.write("{0}:{1}\n".format(user_hash[word_hash], word))
+
+        for second_word in words:
+            pair = word + second_word
+            pair_hash = compute_hash(pair)
+            hashes_computed += 1
+            if pair_hash in user_hash:
                 f.write("{0}:{1}\n".format(user_hash[pair_hash], pair))
 
 
