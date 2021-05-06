@@ -23,7 +23,9 @@ for line in open('passwords1.txt'):
     hashes_computed = 0
     start = time()
 
-for i in range(int(5(len(words)/6)),len(words)):
+boundary = len(words)/6
+
+for i in range(int(5 * boundary),len(words)):
     word = words[i]
     word_hash = compute_hash(word)
     hashes_computed += 1
