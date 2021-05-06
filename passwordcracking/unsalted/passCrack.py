@@ -15,16 +15,16 @@ def compute_hash(word):
     hash_hex_string = hash_hex.decode('utf-8')
     return hash_hex_string
 
-wordsTemp = [line.strip().lower() for line in open('words.txt')]
-words = wordsTemp[int(fileSplit)::70]
-
-
+words = [line.strip().lower() for line in open('words.txt')]
 
 user_hash = dict()
 
+intTrack = 0
 for line in open('passwords1.txt'):
-    line = line.split(":")
-    user_hash[line[1]] = line[0]
+    if intTrack % 70 == int(fileSplit):
+        line = line.split(":")
+        user_hash[line[1]] = line[0]
+    intTrack = intTrack + 1
 
 hashes_computed = 0
 start = time()
